@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class NormalizeSpaces extends SimpleBenchmark {
+public class NormalizeSpacesBenchmark extends SimpleBenchmark {
 
 	@Param({ "0", "10", "100", "1000" })
 	private int length;
@@ -24,14 +24,14 @@ public class NormalizeSpaces extends SimpleBenchmark {
 
 	public void timeNewNormalize(int reps) {
 		for (int i = 0; i < reps; i++) {
-			String normalized = tmsdp.util.StringUtils.normalizeAndReplaceWhitespaces(INPUT);
+			String normalized = NewStringUtils.normalizeSpace(INPUT);
 			assertEquals(EXPECTED, normalized);
 		}
 	}
 
 	@Test
 	public void benchmark() throws Exception {
-		Runner.main(NormalizeSpaces.class, new String[0]);
+		Runner.main(NormalizeSpacesBenchmark.class, new String[0]);
 	}
 
 	@Test
@@ -41,6 +41,6 @@ public class NormalizeSpaces extends SimpleBenchmark {
 
 	@Test
 	public void testNewNormalize() throws Exception {
-		assertEquals(EXPECTED, tmsdp.util.StringUtils.normalizeAndReplaceWhitespaces(INPUT));
+		assertEquals(EXPECTED, NewStringUtils.normalizeSpace(INPUT));
 	}
 }
